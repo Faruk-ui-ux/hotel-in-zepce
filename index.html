@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+:root{--gap:24px;--pad:24px;--h1:72px;--h1lh:80px;--hem:64px;--hemlh:76px;--h2:48px;--h2lh:56px;--h2b:44px;--h2blh:52px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f8f7f5}
+a{color:inherit;text-decoration:none}
+a:hover{color:#806333}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #a7844f;outline-offset:2px}
+[data-cols="2"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(max-width:1199px){
+:root{--h1:64px;--h1lh:72px;--hem:56px;--hemlh:68px}
+[data-el=hero-h1]{font-size:64px!important;line-height:68px!important}
+[data-el=benefit-intro]{grid-column:1/6!important}
+[data-el=benefit-cards]{grid-column:6/13!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important}
+[data-el=benefit-card]{min-height:240px!important;padding:24px 16px!important}
+[data-el=booking-form]{gap:16px!important}
+[data-el=venue-small]{grid-template-columns:40% minmax(0,1fr)!important}
+[data-el=venue-copy]{padding:24px!important}
+[data-el=venue-heading]{gap:40px!important}
+[data-el=venue-heading-text]{width:360px!important}
+[data-el=contact-panel]{padding:40px!important;gap:32px!important}
+}
+@media(max-width:991px){
+[data-el=welcome-center]{grid-column:3/11!important}
+[data-el=welcome-copy]{grid-column:2/12!important}
+:root{--h2:40px;--h2lh:48px;--h2b:40px;--h2blh:48px}
+[data-el=hero]{min-height:560px!important}
+[data-el=hero-copy]{grid-column:1/8!important}
+[data-el=hero-h1]{font-size:56px!important;line-height:64px!important}
+[data-el=hero-photo]{left:38%!important;width:62%!important}
+[data-el=nav-links]{display:none!important}
+[data-el=menu-toggle]{display:flex!important}
+[data-el=wordmark]{grid-column:1/5!important}
+[data-el=nav-cta]{grid-column:7/12!important;grid-row:1!important;justify-self:end!important}
+[data-el=booking-form]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important}
+[data-el=booking-submit]{grid-column:1/-1!important}
+[data-el=venue-wedding],[data-el=venue-stack]{grid-column:1/-1!important}
+[data-el=venue-wedding]{min-height:440px!important}
+[data-el=venue-stack]{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:auto!important}
+[data-el=venue-small]{grid-template-columns:1fr!important}
+[data-el=venue-photo]{height:224px!important;min-height:224px!important}
+[data-el=venue-heading-text]{width:288px!important}
+[data-el=contact-icon]{display:none!important}
+[data-el=room-photo]{height:224px!important}
+[data-el=footer-brand]{grid-column:1/5!important}
+[data-el=footer-nav]{grid-column:5/7!important}
+[data-el=footer-services]{grid-column:7/9!important}
+}
+@media(max-width:767px){
+[data-el=welcome-aside]{display:none!important}
+[data-el=welcome-center],[data-el=welcome-copy]{grid-column:1/13!important}
+[data-el=welcome-center]{white-space:normal!important}
+:root{--h1:44px;--h1lh:52px;--hem:40px;--hemlh:48px;--h2:36px;--h2lh:44px;--h2b:36px;--h2blh:44px}
+[data-grid=main]{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+[data-el=hero]{min-height:0!important}
+[data-el=hero-copy]{grid-column:1/-1!important;padding-block:40px!important}
+[data-el=hero-h1]{font-size:40px!important;line-height:48px!important}
+[data-el=hero-photo]{position:relative!important;inset:auto!important;left:0!important;width:100%!important;height:280px!important;order:3!important}
+[data-el=hero-fade]{display:none!important}
+[data-el=hero-topfade]{height:88px!important}
+[data-el=nav-cta]{display:none!important}
+[data-el=menu-toggle]{grid-column:4!important}
+[data-el=booking-panel]{padding:24px!important;border-radius:12px!important}
+[data-el=section-heading],[data-el=venue-heading]{flex-direction:column!important;align-items:flex-start!important;gap:24px!important}
+[data-el=venue-heading-text]{width:auto!important}
+[data-el=room-card]{grid-column:1/-1!important}
+[data-el=room-photo]{height:248px!important}
+[data-el=benefit-intro],[data-el=benefit-cards]{grid-column:1/-1!important}
+[data-el=benefit-cards]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+[data-el=stats]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:32px 16px!important;padding:32px 16px!important}
+[data-el=stat]{flex-direction:column!important;text-align:center!important;gap:12px!important}
+[data-el=stat]:after{display:none!important}
+[data-el=venue-stack]{grid-template-columns:1fr!important}
+[data-el=venue-photo]{height:232px!important;min-height:232px!important}
+[data-el=contact-panel]{flex-direction:column!important;align-items:flex-start!important;gap:32px!important;padding:32px!important}
+[data-el=footer-brand]{grid-column:1/-1!important}
+[data-el=footer-nav],[data-el=footer-services],[data-el=footer-contact]{grid-column:span 2!important}
+[data-el=footer-bottom]{flex-direction:column!important;gap:12px!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</helmet>
+<div style="background:#f8f7f5;color:#242a24;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;overflow-x:hidden">
+
+
+
+<main>
+<section data-el="hero" aria-labelledby="hero-title" style="position:relative;isolation:isolate;overflow:hidden;background:#F8F7F5;min-height:calc(100svh - 96px);display:flex;flex-direction:column">
+<div data-el="hero-photo" style="position:absolute;top:0;bottom:0;left:28%;right:0;width:72%;height:100%;z-index:0;order:3">
+<img src="assets/hero-hotel.png" alt="Hotel &amp; Restaurant IN u Žepču u suton" style="width:100%;height:100%;object-fit:cover;object-position:58% center;display:block">
+</div>
+<div data-el="hero-fade" aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#F8F7F5 0%,#F8F7F5 28%,rgba(248,247,245,.96) 36%,rgba(248,247,245,.68) 46%,rgba(248,247,245,.16) 60%,rgba(248,247,245,0) 72%)"></div>
+<div data-el="hero-topfade" aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:144px;z-index:1;background:linear-gradient(180deg,rgba(248,247,245,.94) 0%,rgba(248,247,245,.62) 55%,rgba(248,247,245,0) 100%)"></div>
+<header id="pocetna" style="background:transparent;position:relative;z-index:6">
+<div data-grid="main" data-el="nav" style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);height:88px;align-items:center">
+<a data-el="wordmark" href="#pocetna" aria-label="Hotel IN — početna" style="grid-column:1/4;display:flex;align-items:center;gap:12px;color:#1C352A">
+<svg viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:40px;height:48px;flex:none;color:#1d3329"><path d="M4 44V12L20 3l16 9v32H4Z"></path><path d="M13 15v23m14-23v23M13 26h14"></path></svg>
+<span style="font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:28px;white-space:nowrap">HOTEL IN<span style="display:block;font-size:12px;line-height:16px;letter-spacing:.12em;margin-top:4px">ŽEPČE</span></span>
+</a>
+<nav data-el="nav-links" aria-label="Glavna navigacija" style="grid-column:4/10;display:flex;align-items:center;justify-content:space-between;gap:16px;color:#1C352A;font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.04em;font-weight:700">
+<a href="#pocetna" style="padding-block:16px;white-space:nowrap;box-shadow:0 4px 0 -2px #a09b8d">Početna</a>
+<a href="#smjestaj" style="padding-block:16px;white-space:nowrap">Smještaj</a>
+<a href="#pogodnosti" style="padding-block:16px;white-space:nowrap">Pogodnosti</a>
+<a href="#o-hotelu" style="padding-block:16px;white-space:nowrap">O hotelu</a>
+<a href="#kontakt" style="padding-block:16px;white-space:nowrap">Kontakt</a>
+</nav>
+<a data-el="nav-cta" href="#rezervacija" style="grid-column:10/13;justify-self:end;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 24px;border-radius:4px;background:#1C352A;color:#F8F7F5;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap" style-hover="background:#284739;color:#F8F7F5">Upit za boravak</a>
+<button data-el="menu-toggle" type="button" aria-label="Otvori meni" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="display:none;grid-column:12;grid-row:1;width:40px;height:40px;border:0;background:transparent;color:#1d3329;font-size:24px;line-height:24px;justify-self:end;align-items:center;justify-content:center;cursor:pointer;font-family:Arial,Helvetica,sans-serif">☰</button>
+</div>
+<sc-if value="{{ menuOpen }}">
+<nav aria-label="Mobilna navigacija" style="position:absolute;top:100%;left:24px;right:24px;z-index:8;background:#fff;padding:24px;border-radius:0 0 12px 12px;box-shadow:0 12px 24px #15271f14;display:grid;gap:16px;font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.04em;font-weight:700">
+<a href="#pocetna" onClick="{{ closeMenu }}">Početna</a>
+<a href="#smjestaj" onClick="{{ closeMenu }}">Smještaj</a>
+<a href="#pogodnosti" onClick="{{ closeMenu }}">Pogodnosti</a>
+<a href="#o-hotelu" onClick="{{ closeMenu }}">O hotelu</a>
+<a href="#kontakt" onClick="{{ closeMenu }}">Kontakt</a>
+<a href="#rezervacija" onClick="{{ closeMenu }}" style="min-height:56px;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:16px 24px;border-radius:4px;background:#1d3329;color:#fff" style-hover="color:#fff">Upit za boravak</a>
+</nav>
+</sc-if>
+</header>
+<div data-grid="main" data-el="hero-row" style="position:relative;z-index:3;flex:1;width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center">
+<div data-el="hero-copy" style="grid-column:1/6;padding-block:64px">
+<span style="display:block;color:#967640;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.2em;text-transform:uppercase">Hotel IN · Žepče</span>
+<h1 id="hero-title" data-el="hero-h1" style="margin:24px 0 0;font-family:Georgia,'Times New Roman',serif;font-weight:400;color:#1C352A;font-size:72px;line-height:76px">Vaše mjesto<br>za odmor.</h1>
+<p style="margin:24px 0 0;font-size:16px;line-height:24px;color:#505A53;max-width:360px;text-wrap:pretty">Na ulazu u Žepče, uz put M-17.<br>Za odmor, poslovni boravak i posebne prilike.</p>
+<a href="#rezervacija" style="margin-top:32px;min-height:48px;display:inline-flex;align-items:center;gap:12px;padding:14px 24px;border-radius:4px;background:#1C352A;color:#F8F7F5;font-size:14px;line-height:20px;font-weight:700;white-space:nowrap;transition:background .2s" style-hover="background:#284739;color:#F8F7F5">Rezervišite boravak <span aria-hidden="true" style="font-size:16px;line-height:20px;font-weight:400">→</span></a>
+</div>
+</div>
+</section>
+
+<sc-if value="{{ showBooking }}" hint-placeholder-val="{{ true }}">
+<div id="rezervacija" style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;position:relative;z-index:2;margin-top:-64px">
+<div data-el="booking-panel" style="padding:32px;background:#fff;border-radius:16px;box-shadow:0 12px 40px #17291a0d">
+<form data-el="booking-form" aria-label="Upit za boravak" onSubmit="{{ onSubmit }}" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.25fr);gap:24px;align-items:center">
+<div style="min-width:0;padding-right:16px;box-shadow:1px 0 0 #e5e4dd">
+<label for="arrival" style="display:block;text-transform:uppercase;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;color:#656b63;margin-bottom:12px">Dolazak</label>
+<div style="display:flex;align-items:center;gap:8px">
+<svg viewBox="0 0 24 24" fill="none" stroke="#787f73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 2v6m10-6v6M3 11h18M7 15h2m4 0h2M7 18h2"></path></svg>
+<input id="arrival" name="arrival" type="date" aria-label="Datum dolaska" min="{{ today }}" value="{{ arrival }}" onChange="{{ onArrival }}" style="display:block;min-width:0;width:100%;border:0;background:transparent;padding:0;color:#242a24;font-size:16px;line-height:24px;height:32px;font-family:Arial,Helvetica,sans-serif">
+</div>
+</div>
+<div style="min-width:0;padding-right:16px;box-shadow:1px 0 0 #e5e4dd">
+<label for="departure" style="display:block;text-transform:uppercase;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;color:#656b63;margin-bottom:12px">Odlazak</label>
+<div style="display:flex;align-items:center;gap:8px">
+<svg viewBox="0 0 24 24" fill="none" stroke="#787f73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 2v6m10-6v6M3 11h18M7 15h2m4 0h2M7 18h2"></path></svg>
+<input id="departure" name="departure" type="date" aria-label="Datum odlaska" min="{{ minDeparture }}" value="{{ departure }}" onChange="{{ onDeparture }}" style="display:block;min-width:0;width:100%;border:0;background:transparent;padding:0;color:#242a24;font-size:16px;line-height:24px;height:32px;font-family:Arial,Helvetica,sans-serif">
+</div>
+</div>
+<div style="min-width:0;padding-right:16px;box-shadow:1px 0 0 #e5e4dd">
+<label for="guests" style="display:block;text-transform:uppercase;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;color:#656b63;margin-bottom:12px">Broj gostiju</label>
+<div style="display:flex;align-items:center;gap:8px">
+<svg viewBox="0 0 24 24" fill="none" stroke="#787f73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="9" r="2"></circle><path d="M2 21v-4a6 6 0 0 1 12 0v4M16 14a5 5 0 0 1 6 5v2"></path></svg>
+<select id="guests" name="guests" value="{{ guests }}" onChange="{{ onGuests }}" style="display:block;min-width:0;width:100%;border:0;background:transparent;padding:0;color:#242a24;font-size:16px;line-height:24px;height:32px;font-family:Arial,Helvetica,sans-serif">
+<option value="1 gost">1 gost</option>
+<option value="2 gosta">2 gosta</option>
+<option value="3 gosta">3 gosta</option>
+<option value="4 ili više">4 ili više</option>
+</select>
+</div>
+</div>
+<div style="min-width:0;padding-right:16px;box-shadow:1px 0 0 #e5e4dd">
+<label for="room" style="display:block;text-transform:uppercase;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;color:#656b63;margin-bottom:12px">Smještaj</label>
+<div style="display:flex;align-items:center;gap:8px">
+<svg viewBox="0 0 24 24" fill="none" stroke="#787f73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M3 18V8m18 10V8M3 14h18M5 14V6h14v8M7 10h4m2 0h4M3 18h18M3 18v3m18-3v3"></path></svg>
+<select id="room" name="room" value="{{ room }}" onChange="{{ onRoom }}" style="display:block;min-width:0;width:100%;border:0;background:transparent;padding:0;color:#242a24;font-size:16px;line-height:24px;height:32px;font-family:Arial,Helvetica,sans-serif">
+<option value="Sve sobe">Sve sobe</option>
+<option value="Standardna soba">Standardna soba</option>
+<option value="Dvokrevetna soba">Dvokrevetna soba</option>
+<option value="Deluxe Studio">Deluxe Studio</option>
+</select>
+</div>
+</div>
+<button data-el="booking-submit" type="submit" style="min-height:56px;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:16px;border:0;border-radius:4px;background:#1d3329;color:#fff;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;cursor:pointer;font-family:Arial,Helvetica,sans-serif" style-hover="background:#304b3b">Pripremi upit
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 20l7-8m13 8-7-8"></path></svg>
+</button>
+</form>
+
+<sc-if value="{{ error }}">
+<p style="margin:0;font-size:12px;line-height:16px;color:#a23028;margin-top:8px;font-weight:700">{{ error }}</p>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+
+
+<section aria-labelledby="welcome2-title" style="background: #f8f7f5; padding-top: 96px; padding-bottom: 0px">
+<div data-el="welcome-grid" style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:0;align-items:center">
+
+<div style="grid-column:1/13;grid-row:1;display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:48px">
+<span aria-hidden="true" style="width:68px;height:1px;background:#866938;flex:none"></span>
+<span style="font-family:Arial,Helvetica,sans-serif;color:#866938;font-size:13px;line-height:18px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap">Mjesto gdje priče počinju</span>
+<span aria-hidden="true" style="width:68px;height:1px;background:#866938;flex:none"></span>
+</div>
+
+<div data-el="welcome-aside" style="grid-column:1/3;grid-row:2;align-self:center;text-align:left;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:26px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#242a24">
+<span style="display:block">Udobnost</span>
+<span style="display:block">Gostoprimstvo</span>
+<span aria-hidden="true" style="display:block;width:60px;height:1px;background:#866938;margin:16px 0 0"></span>
+</div>
+
+<h2 id="welcome2-title" data-el="welcome-center" style="grid-column:4/10;grid-row:2;margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;color:#242a24;font-size:clamp(40px,4.6vw,64px);line-height:1.02;text-align:center;white-space:nowrap">Dobrodošli kod nas</h2>
+
+<div data-el="welcome-aside" style="grid-column:11/13;grid-row:2;align-self:center;text-align:right;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:26px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#242a24">
+<span style="display:block">Odmor</span>
+<span style="display:block">Užitak</span>
+<span aria-hidden="true" style="display:block;width:60px;height:1px;background:#866938;margin:16px 0 0 auto"></span>
+</div>
+
+<p data-el="welcome-copy" style="grid-column:3/11;grid-row:3;margin:38px auto 0;max-width:680px;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.45;color:#3d4238;text-align:center;text-wrap:pretty">Prepustite se miru, udobnosti i pažnji koju zaslužujete.<br>Kod nas svaki boravak postaje posebno iskustvo.</p>
+
+<div style="grid-column:1/13;grid-row:4;display:flex;align-items:center;gap:28px;margin-top:68px">
+<span aria-hidden="true" style="flex:1;height:1px;background:#c9ab7d"></span>
+<span style="flex:none;font-family:Arial,Helvetica,sans-serif;color:#866938;font-size:13px;line-height:18px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;white-space:nowrap">Hotel IN · Žepče</span>
+<span aria-hidden="true" style="flex:1;height:1px;background:#c9ab7d"></span>
+</div>
+
+</div>
+</section>
+
+<section id="smjestaj" aria-labelledby="rooms-title" style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;padding-top:96px">
+<div data-el="section-heading" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:40px">
+<div>
+<span style="display:block;color:#866938;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">Smještaj u Hotelu IN</span>
+<h2 id="rooms-title" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:var(--h2);line-height:var(--h2lh)">Prostor za vaš predah.</h2>
+<p style="margin:0;margin-top:16px;color:#59615a">Odaberite sobu koja odgovara vašem boravku.</p>
+</div>
+<a href="https://www.hotelinzepce.com/hotel" style="display:inline-flex;align-items:center;gap:16px;font-size:12px;line-height:16px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#806333;margin-bottom:8px;flex:none" style-hover="text-decoration:underline">Pogledajte sav smještaj <span aria-hidden="true" style="font-size:20px;line-height:24px;font-weight:400">→</span></a>
+</div>
+<div data-grid="main" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)">
+
+<article data-el="room-card" style="grid-column:span 4;background:#fff;border-radius:12px;overflow:hidden;min-width:0">
+<a data-el="room-photo" href="https://www.hotelinzepce.com/hotel" aria-label="Standardna soba — detalji" style="height:280px;position:relative;display:block;overflow:hidden">
+<img src="assets/standard.jpg" alt="Standardna soba u Hotelu IN" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+<sc-if value="{{ showRoomTags }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:24px;left:24px;background:#fff;color:#1d3329;padding:8px 12px;border-radius:4px;font-size:12px;line-height:16px;font-weight:700">BRAČNI KREVET</span></sc-if>
+</a>
+<div style="padding:24px">
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:36px">Standardna soba</h3>
+<p style="margin:0;display:flex;align-items:center;gap:8px;font-size:12px;line-height:20px;margin-top:8px;color:#59615a">
+<svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex:none"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Hotel IN, Žepče</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;color:#59615a;font-size:12px;line-height:16px">
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M7 17 17 7M11 7h6v6M7 11v6h6"></path></svg>25 m²</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3M3 10l4-1V5m14 5-4-1V5M3 14l4 1v4m14-5-4 1v4"></path></svg>Klima</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"></path><circle cx="12" cy="20" r=".5"></circle></svg>Wi-Fi</span>
+</div>
+<a href="https://www.hotelinzepce.com/hotel" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid #1d3329;color:#1d3329;font-size:16px;font-weight:700;padding:16px 24px;border-radius:8px;transition:background .2s,color .2s;height:52px" style-hover="background:#1d3329;color:#fff">Detalji smještaja <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+
+<article data-el="room-card" style="grid-column:span 4;background:#fff;border-radius:12px;overflow:hidden;min-width:0">
+<a data-el="room-photo" href="https://www.hotelinzepce.com/hotel" aria-label="Dvokrevetna soba — detalji" style="height:280px;position:relative;display:block;overflow:hidden">
+<img src="assets/dvokrevetna.jpg" alt="Dvokrevetna soba u Hotelu IN" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+<sc-if value="{{ showRoomTags }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:24px;left:24px;background:#fff;color:#1d3329;padding:8px 12px;border-radius:4px;font-size:12px;line-height:16px;font-weight:700">UDOBAN BORAVAK</span></sc-if>
+</a>
+<div style="padding:24px">
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:36px">Dvokrevetna soba</h3>
+<p style="margin:0;display:flex;align-items:center;gap:8px;font-size:12px;line-height:20px;margin-top:8px;color:#59615a">
+<svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex:none"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Hotel IN, Žepče</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;color:#59615a;font-size:12px;line-height:16px">
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M7 17 17 7M11 7h6v6M7 11v6h6"></path></svg>25 m²</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3M3 10l4-1V5m14 5-4-1V5M3 14l4 1v4m14-5-4 1v4"></path></svg>Klima</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"></path><circle cx="12" cy="20" r=".5"></circle></svg>Wi-Fi</span>
+</div>
+<a href="https://www.hotelinzepce.com/hotel" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid #1d3329;color:#1d3329;font-size:16px;font-weight:700;padding:16px 24px;border-radius:8px;transition:background .2s,color .2s;height:52px" style-hover="background:#1d3329;color:#fff">Detalji smještaja <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+
+<article data-el="room-card" style="grid-column:span 4;background:#fff;border-radius:12px;overflow:hidden;min-width:0">
+<a data-el="room-photo" href="https://www.hotelinzepce.com/hotel" aria-label="Deluxe Studio — detalji" style="height:280px;position:relative;display:block;overflow:hidden">
+<img src="assets/soba-detalj.jpg" alt="Deluxe Studio u Hotelu IN" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+<sc-if value="{{ showRoomTags }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:24px;left:24px;background:#fff;color:#1d3329;padding:8px 12px;border-radius:4px;font-size:12px;line-height:16px;font-weight:700">VIŠE PROSTORA</span></sc-if>
+</a>
+<div style="padding:24px">
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:36px">Deluxe Studio</h3>
+<p style="margin:0;display:flex;align-items:center;gap:8px;font-size:12px;line-height:20px;margin-top:8px;color:#59615a">
+<svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex:none"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Hotel IN, Žepče</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;color:#59615a;font-size:12px;line-height:16px">
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M7 17 17 7M11 7h6v6M7 11v6h6"></path></svg>50 m²</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3M3 10l4-1V5m14 5-4-1V5M3 14l4 1v4m14-5-4 1v4"></path></svg>Klima</span>
+<span style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#76806d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;flex:none"><path d="M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"></path><circle cx="12" cy="20" r=".5"></circle></svg>Wi-Fi</span>
+</div>
+<a href="https://www.hotelinzepce.com/hotel" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid #1d3329;color:#1d3329;font-size:16px;font-weight:700;padding:16px 24px;border-radius:8px;transition:background .2s,color .2s;height:52px" style-hover="background:#1d3329;color:#fff">Detalji smještaja <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+</div>
+</section>
+
+<section id="pogodnosti" aria-labelledby="benefits-title" style="width: 100%; max-width:calc(1128px + var(--pad) * 2); padding-inline: var(--pad); margin-inline: auto; padding-top: 120px">
+<div data-grid="main" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:center;row-gap:32px">
+<div data-el="benefit-intro" style="grid-column:1/5">
+<span style="display:block;color:#866938;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">Zašto Hotel IN</span>
+<h2 id="benefits-title" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:var(--h2b);line-height:var(--h2blh)">Manje brige.<br>Više <em style="font-weight:400;font-style:italic;color:#866938">odmora.</em></h2>
+<p style="margin:0;margin-top:20px;color:#59615a">Važne sitnice za ugodan boravak, bilo da dolazite poslovno ili na odmor.</p>
+<a href="#o-hotelu" style="min-height:56px;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:16px 24px;border-radius:4px;background:#1d3329;color:#fff;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;margin-top:28px" style-hover="background:#304b3b;color:#fff">Više o hotelu <span aria-hidden="true" style="font-size:20px;line-height:24px;font-weight:400">→</span></a>
+</div>
+<div data-el="benefit-cards" data-cols="{{ benefitCols }}" style="grid-column:5/13;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+<article data-el="benefit-card" style="padding:32px 16px;background:#fff;text-align:center;min-height:280px">
+<div style="width:64px;height:64px;border-radius:50%;background:#1d3329;color:#d9c79d;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><rect x="4" y="2" width="16" height="20" rx="3"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>
+</div>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:20px;line-height:24px;margin-bottom:16px">Parking uz hotel</h3>
+<p style="margin:0;font-size:12px;line-height:20px;color:#59615a">Besplatan parking bez prethodne rezervacije.</p>
+</article>
+<article data-el="benefit-card" style="padding:32px 16px;background:#fff;text-align:center;min-height:280px">
+<div style="width:64px;height:64px;border-radius:50%;background:#1d3329;color:#d9c79d;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><path d="M3 8a15 15 0 0 1 18 0M6 12a10 10 0 0 1 12 0M9 16a5 5 0 0 1 6 0"></path><circle cx="12" cy="20" r=".5"></circle></svg>
+</div>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:20px;line-height:24px;margin-bottom:16px">Ostanite povezani</h3>
+<p style="margin:0;font-size:12px;line-height:20px;color:#59615a">Besplatan Wi-Fi dostupan u cijelom objektu.</p>
+</article>
+<article data-el="benefit-card" style="padding:32px 16px;background:#fff;text-align:center;min-height:280px">
+<div style="width:64px;height:64px;border-radius:50%;background:#1d3329;color:#d9c79d;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><circle cx="12" cy="12" r="9"></circle><path d="M12 6v6l4 2"></path></svg>
+</div>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:20px;line-height:24px;margin-bottom:16px">Recepcija 24/7</h3>
+<p style="margin:0;font-size:12px;line-height:20px;color:#59615a">Za vaš dolazak, u bilo koje doba dana.</p>
+</article>
+<article data-el="benefit-card" style="padding:32px 16px;background:#fff;text-align:center;min-height:280px">
+<div style="width:64px;height:64px;border-radius:50%;background:#1d3329;color:#d9c79d;display:flex;align-items:center;justify-content:center;margin:0 auto 24px">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><path d="M5 3v6m3-6v6M2 3v6a3 3 0 0 0 6 0M5 12v9M17 3v18m0-18c-5 4-5 10 0 10"></path></svg>
+</div>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:20px;line-height:24px;margin-bottom:16px">Restoran IN</h3>
+<p style="margin:0;font-size:12px;line-height:20px;color:#59615a">Mjesto za obrok, druženje i manje svečanosti.</p>
+</article>
+</div>
+</div>
+
+</section>
+
+<section id="o-hotelu" aria-labelledby="venue-title" style="width: 100%; max-width:calc(1128px + var(--pad) * 2); padding-inline: var(--pad); margin-inline: auto; padding-top: 120px">
+<div data-el="venue-heading" style="display:flex;align-items:flex-end;justify-content:space-between;gap:72px;margin-bottom:40px">
+<div>
+<span style="display:block;color:#866938;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">Restoran · Svečanosti · Poslovni susreti</span>
+<h2 id="venue-title" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:var(--h2);line-height:var(--h2lh)">Vaši trenuci.<br>Naš prostor.</h2>
+</div>
+<p data-el="venue-heading-text" style="margin: 0; width: 360px; flex: none; margin-bottom: 8px; color: #59615a; text-align: right">Od opuštenog ručka do velikog dana.<br>Pronađite svoj povod za dolazak.</p>
+</div>
+<div data-grid="main" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);align-items:stretch;row-gap:24px">
+<article data-el="venue-wedding" style="grid-column:1/7;position:relative;min-height:536px;overflow:hidden;border-radius:16px;color:#fff">
+<img src="assets/dvorana.jpg" alt="Svečana dvorana Hotela IN" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,#14251fea 100%)"></div>
+<div style="position:absolute;bottom:40px;left:40px;right:40px">
+<span style="display:block;color:#e5d3af;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px">Svečana dvorana</span>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:44px;line-height:48px">Za vaš<br>poseban dan.</h3>
+<p style="margin:0;color:#f4f5ed;margin-top:16px;max-width:360px">Okupite svoje najdraže i proslavite trenutke koji se pamte.</p>
+<a href="https://www.hotelinzepce.com/sve%C4%8Dana-dvorana" style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 700; padding: 16px 24px; border-radius: 8px; transition: background .2s,color .2s; border: 1.5px solid rgba(255,255,255,.72); color: #fff; height: 52px" style-hover="background:rgba(255,255,255,.16);color:#fff">Istražite dvoranu <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+<div data-el="venue-stack" style="grid-column:7/13;display:grid;gap:24px;grid-template-rows:repeat(2,minmax(256px,auto))">
+<article data-el="venue-small" style="display:grid;grid-template-columns:264px minmax(0,1fr);background:#fff;border-radius:16px;overflow:hidden;min-height:256px">
+<div data-el="venue-photo" style="min-height:256px"><img src="assets/restoran.jpg" alt="Restoran Hotela IN" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div data-el="venue-copy" style="padding:36px 32px">
+<span style="display:block;font-size:12px;line-height:16px;color:#866938;margin-bottom:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Okusi i druženje</span>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:36px">Restoran IN</h3>
+<p style="margin:0;margin-top:16px;color:#59615a">Dobar obrok.<br>Još bolje društvo.</p>
+<a href="https://www.hotelinzepce.com/restoran" style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 700; padding: 16px 24px; border-radius: 8px; transition: background .2s,color .2s; border: 1.5px solid #1d3329; color: #1d3329; height: 52px" style-hover="background:#1d3329;color:#fff">Više o restoranu <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+<article data-el="venue-small" style="display:grid;grid-template-columns:264px minmax(0,1fr);background:#fff;border-radius:16px;overflow:hidden;min-height:256px">
+<div data-el="venue-photo" style="min-height:256px"><img src="assets/kongres.jpg" alt="Kongresna sala Hotela IN" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div data-el="venue-copy" style="padding:36px 32px">
+<span style="display:block;font-size:12px;line-height:16px;color:#866938;margin-bottom:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Poslovni događaji</span>
+<h3 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:36px">Kongresna sala</h3>
+<p style="margin:0;margin-top:16px;color:#59615a">Prostor za ideje,<br>susrete i saradnju.</p>
+<a href="https://www.hotelinzepce.com/kongresna-sala" style="margin-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 16px; font-weight: 700; padding: 16px 24px; border-radius: 8px; transition: background .2s,color .2s; border: 1.5px solid #1d3329; color: #1d3329; height: 52px" style-hover="background:#1d3329;color:#fff">Pogledajte salu <span aria-hidden="true" style="font-size:20px;line-height:20px">→</span></a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="kontakt" aria-labelledby="contact-title" style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto;padding-top:96px;position:relative;z-index:2;margin-bottom:-64px">
+<div data-el="contact-panel" style="position:relative;isolation:isolate;border-radius:16px;background:#1d3329;overflow:hidden;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:48px;min-height:192px;color:#fff">
+<div style="position:absolute;inset:0;z-index:-1;background-image:linear-gradient(90deg,#1d3329f5,#1d3329dc),url('assets/restoran.jpg');background-position:center;background-size:cover"></div>
+<div style="display:flex;gap:32px;align-items:center">
+<div data-el="contact-icon" style="height:80px;width:80px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#a7844f">
+<svg viewBox="0 0 24 24" fill="none" stroke="#15271f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px"><rect x="2" y="4" width="20" height="16" rx="1"></rect><path d="m2 5 10 8L22 5M2 20l7-8m13 8-7-8"></path></svg>
+</div>
+<div>
+<h2 id="contact-title" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:32px;line-height:40px">Planirate dolazak ili svečanost?</h2>
+<p style="margin:0;margin-top:12px;color:#e0e6dd;font-size:16px;line-height:24px">Javite nam se. Dogovorit ćemo detalje.</p>
+</div>
+</div>
+<a href="mailto:hotelinzepce@gmail.com" style="min-height:56px;min-width:224px;display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:16px 24px;border-radius:4px;background:#cbb27e;color:#15271f;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap" style-hover="background:#dec595;color:#15271f">Kontaktirajte nas <span aria-hidden="true" style="font-size:20px;line-height:24px;font-weight:400">→</span></a>
+</div>
+</section>
+</main>
+
+<footer style="background:#15271f;color:#f5f4ed;padding-top:128px;padding-bottom:32px">
+<div style="width:100%;max-width:calc(1128px + var(--pad) * 2);padding-inline:var(--pad);margin-inline:auto">
+<div data-grid="main" style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);row-gap:40px">
+<div data-el="footer-brand" style="grid-column:1/5">
+<a href="#pocetna" aria-label="Hotel IN — početna" style="display:flex;align-items:center;gap:12px;color:#f5f4ed" style-hover="color:#f5f4ed">
+<svg viewBox="0 0 40 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="width:40px;height:48px;flex:none;color:#eee4ce"><path d="M4 44V12L20 3l16 9v32H4Z"></path><path d="M13 15v23m14-23v23M13 26h14"></path></svg>
+<span style="font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:28px;white-space:nowrap">HOTEL IN<span style="display:block;font-size:12px;line-height:16px;letter-spacing:.12em;margin-top:4px">ŽEPČE</span></span>
+</a>
+<p style="margin:0;font-size:12px;line-height:20px;color:#cad2c9;margin-top:24px;max-width:264px">Smještaj, susreti i posebni trenuci.<br>Dobro došli u Hotel IN, Žepče.</p>
+</div>
+<div data-el="footer-nav" style="grid-column:5/7">
+<h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:16px;text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin-bottom:24px">Istražite</h3>
+<a href="#pocetna" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Početna</a>
+<a href="#smjestaj" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Smještaj</a>
+<a href="#pogodnosti" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Pogodnosti</a>
+<a href="#o-hotelu" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">O hotelu</a>
+</div>
+<div data-el="footer-services" style="grid-column:7/9">
+<h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:16px;text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin-bottom:24px">Naša ponuda</h3>
+<a href="https://www.hotelinzepce.com/restoran" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Restoran</a>
+<a href="https://www.hotelinzepce.com/sve%C4%8Dana-dvorana" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Svečana dvorana</a>
+<a href="https://www.hotelinzepce.com/kongresna-sala" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Kongresna sala</a>
+</div>
+<div data-el="footer-contact" style="grid-column:9/13">
+<h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:16px;text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin-bottom:24px">Kontakt</h3>
+<p style="margin:0;display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px">Ravne Donje bb, 72230 Žepče</p>
+<a href="tel:+38763772375" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Hotel: +387 63 772 375</a>
+<a href="tel:+38763386251" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px" style-hover="color:#fff;text-decoration:underline">Proslave: +387 63 386 251</a>
+<a href="mailto:hotelinzepce@gmail.com" style="display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px;overflow-wrap:anywhere" style-hover="color:#fff;text-decoration:underline">hotelinzepce@gmail.com</a>
+<p style="margin:0;display:block;font-size:12px;line-height:20px;color:#cad2c9;margin-top:12px">Recepcija 24/7 · Restoran 07:00–23:00</p>
+</div>
+</div>
+<div data-el="footer-bottom" style="display:flex;justify-content:space-between;gap:24px;font-size:12px;line-height:16px;color:#b7c3b8;margin-top:48px;padding-top:24px;box-shadow:0 -1px 0 #ffffff24">
+<span>© 2026 Hotel IN</span>
+<span>Vaš predah u Žepču.</span>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBooking&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sekcije&quot;},&quot;showRoomTags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sekcije&quot;},&quot;benefitLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;4 u redu&quot;,&quot;2×2&quot;],&quot;default&quot;:&quot;4 u redu&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Raspored&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, arrival: "", departure: "", guests: "2 gosta", room: "Sve sobe", error: "" };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false }); };
+    document.addEventListener("keydown", this._esc);
+  }
+  componentWillUnmount() { document.removeEventListener("keydown", this._esc); }
+
+  todayIso() {
+    const d = new Date();
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  }
+  nextDay(iso) {
+    if (!iso) return this.todayIso();
+    const d = new Date(iso + "T00:00:00");
+    d.setDate(d.getDate() + 1);
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  }
+
+  renderVals() {
+    const today = this.todayIso();
+    const { arrival, departure, guests, room, error, menuOpen } = this.state;
+    return {
+      menuOpen,
+      arrival, departure, guests, room, error,
+      today,
+      minDeparture: this.nextDay(arrival || today),
+      showBooking: this.props.showBooking ?? true,
+      showRoomTags: this.props.showRoomTags ?? true,
+      benefitCols: (this.props.benefitLayout ?? "4 u redu") === "2×2" ? "2" : "4",
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      onArrival: (e) => {
+        const v = e.target.value;
+        this.setState((s) => ({
+          arrival: v,
+          departure: s.departure && s.departure <= v ? "" : s.departure,
+          error: ""
+        }));
+      },
+      onDeparture: (e) => this.setState({ departure: e.target.value, error: "" }),
+      onGuests: (e) => this.setState({ guests: e.target.value }),
+      onRoom: (e) => this.setState({ room: e.target.value }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (!arrival || !departure) {
+          this.setState({ error: "Odaberite datum dolaska i odlaska." });
+          return;
+        }
+        if (arrival < today) {
+          this.setState({ error: "Datum dolaska ne može biti u prošlosti." });
+          return;
+        }
+        if (departure <= arrival) {
+          this.setState({ error: "Datum odlaska mora biti poslije dolaska." });
+          return;
+        }
+        this.setState({ error: "" });
+        const body = [
+          "Upit za boravak u Hotelu IN, Žepče",
+          "",
+          "Dolazak: " + arrival,
+          "Odlazak: " + departure,
+          "Broj gostiju: " + guests,
+          "Smještaj: " + room,
+          "",
+          "Molimo potvrdu dostupnosti i cijene."
+        ].join("\n");
+        window.location.href =
+          "mailto:hotelinzepce@gmail.com?subject=" +
+          encodeURIComponent("Upit za boravak — " + arrival + " do " + departure) +
+          "&body=" + encodeURIComponent(body);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
